@@ -86,6 +86,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'New Ultimate News Headline',
+    date: 'Sep 30th, 2020',
+    firstParagraph: `Awesome info 1`,
+
+    secondParagraph: `Awesome info 2 `,
+
+    thirdParagraph: `Awesome info 3`
   }
 ];
 
@@ -135,7 +144,7 @@ function articleMaker(articleObject) {
   p1.textContent = articleObject.firstParagraph;
   p2.textContent = articleObject.secondParagraph;
   p3.textContent = articleObject.thirdParagraph;
-  button.textContent = '+'
+  button.textContent = '+';
 
   //Append items
   container.appendChild(h2);
@@ -152,6 +161,8 @@ function articleMaker(articleObject) {
   return container;
 }
 
+
+//Get article area and append items to page
 let articleArea = document.querySelector('.articles');
 
 data.forEach(article => {
