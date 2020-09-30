@@ -157,6 +157,13 @@ function articleMaker(articleObject) {
   //Add Event Listeners
   button.addEventListener('click', (e) => {
     container.classList.toggle('article-open');
+    let state = container.className;
+    if (state !== 'article-open') {
+      gsap.to(container, {duration: 1, height: 450});
+    }
+    if (state === 'article') {
+      gsap.to(container, {duration: 1, height: 50});
+    }   
   });
   return container;
 }
