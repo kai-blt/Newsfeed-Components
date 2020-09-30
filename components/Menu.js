@@ -52,8 +52,15 @@ function menuMaker(data) {
   //Assign listener to button
   menuButton.addEventListener('click', (e) => {
     container.classList.toggle('menu--open');
+    let state = container.className;
+    if (state !== 'menu--open') {
+      gsap.to(container, {duration: 1, x: 350});
+    }
+    if (state === 'menu') {
+      gsap.to(container, {duration: 1, x: -350});
+    }   
   })
-
+  
   return container;
 }
 
