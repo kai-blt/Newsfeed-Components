@@ -159,11 +159,13 @@ function articleMaker(articleObject) {
     container.classList.toggle('article-open');
     let state = container.className;
     if (state !== 'article-open') {
-      gsap.to(container, {duration: 1, height: 450});
+      //Greensock ease back out animation
+      gsap.to(container, {duration: 1, height: 450, ease: 'back.out(1.7)'});
       button.textContent = 'Click to Close'; 
     }
     if (state === 'article') {
-      gsap.to(container, {duration: 1, height: 50});
+      //Greensock ease back in animation
+      gsap.to(container, {duration: 1, height: 50, ease: 'back.in(1.7)'});
       button.textContent = 'Click to Expand' 
     }   
   });
