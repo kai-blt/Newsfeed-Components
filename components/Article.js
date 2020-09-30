@@ -144,7 +144,7 @@ function articleMaker(articleObject) {
   p1.textContent = articleObject.firstParagraph;
   p2.textContent = articleObject.secondParagraph;
   p3.textContent = articleObject.thirdParagraph;
-  button.textContent = '+';
+  button.textContent = 'Click to Expand';
 
   //Append items
   container.appendChild(h2);
@@ -160,9 +160,11 @@ function articleMaker(articleObject) {
     let state = container.className;
     if (state !== 'article-open') {
       gsap.to(container, {duration: 1, height: 450});
+      button.textContent = 'Click to Close'; 
     }
     if (state === 'article') {
       gsap.to(container, {duration: 1, height: 50});
+      button.textContent = 'Click to Expand' 
     }   
   });
   return container;
