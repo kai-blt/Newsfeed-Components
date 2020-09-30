@@ -86,6 +86,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'New Ultimate News Headline',
+    date: 'Sep 30th, 2020',
+    firstParagraph: `Awesome info 1`,
+
+    secondParagraph: `Awesome info 2 `,
+
+    thirdParagraph: `Awesome info 3`
   }
 ];
 
@@ -101,7 +110,7 @@ const data = [
     {three separate paragraph elements}
 
     <span class="expandButton">+</span>
-  </div>
+  </div> 
 
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
@@ -113,4 +122,63 @@ const data = [
 
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
-*/
+*/  
+
+function articleMaker(articleObject) {
+  let container = document.createElement('div');
+  let h2 = document.createElement('h2');
+  let date = document.createElement('p');
+  let p1 = document.createElement('p');
+  let p2 = document.createElement('p');
+  let p3 = document.createElement('p');
+  let button = document.createElement('span')
+
+  //Add classes
+  container.classList.add('article');
+  date.classList.add('date');
+  button.classList.add('expandButton');
+  
+  //Set Text
+  h2.textContent = articleObject.title;
+  date.textContent = articleObject.date;
+  p1.textContent = articleObject.firstParagraph;
+  p2.textContent = articleObject.secondParagraph;
+  p3.textContent = articleObject.thirdParagraph;
+  button.textContent = 'Click to Expand';
+
+  //Append items
+  container.appendChild(h2);
+  container.appendChild(date);
+  container.appendChild(p1);
+  container.appendChild(p2);
+  container.appendChild(p3);
+  container.appendChild(button);
+
+  //Add Event Listeners
+  button.addEventListener('click', (e) => {
+    container.classList.toggle('article-open');
+    let state = container.className;
+    if (state !== 'article-open') {
+      //Greensock ease back out animation
+      gsap.to(container, {duration: 1, height: 450, ease: 'back.out(1.7)'});
+      button.textContent = 'Click to Close'; 
+    }
+    if (state === 'article') {
+      //Greensock ease back in animation
+      gsap.to(container, {duration: 1, height: 50, ease: 'back.in(1.7)'});
+      button.textContent = 'Click to Expand' 
+    }   
+  });
+  return container;
+}
+
+
+//Get article area and append items to page
+let articleArea = document.querySelector('.articles');
+
+data.forEach(article => {
+  articleArea.appendChild(articleMaker(article));
+})
+
+
+
