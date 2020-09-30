@@ -34,6 +34,7 @@ let menuItems = [
 
 
 function menuMaker(data) {
+  //Instantiate Elements
   let container = document.createElement('div');
   let list = document.createElement('ul');  
   container.className = 'menu';
@@ -56,5 +57,6 @@ function menuMaker(data) {
   return container;
 }
 
+//Grab header and prepend the menu that was just made!
 let header = document.querySelector('.header');
 header.prepend(menuMaker(menuItems));
